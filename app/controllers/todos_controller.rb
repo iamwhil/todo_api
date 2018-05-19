@@ -17,7 +17,8 @@ class TodosController < ApplicationController
   end
 
   def update
-    @todo.update(todo_params)
+    puts "were working with #{@todo.inspect}"
+    @todo.update!(todo_params)
     head :no_content
   end
 
@@ -30,11 +31,13 @@ class TodosController < ApplicationController
 
     def todo_params
       # Whitelist parameters. 
-      params.permit(:title, :created_by)
+      params.permit(:id, :title, :created_by)
     end
 
     def set_todo
-      @todo = Todo.find(params[:id])
+      p = params.permit(:id)
+      p = p['id']
+      @todo = Todo.find(p.to_i)
     end
 
 end
