@@ -14,7 +14,7 @@ RSpec.describe 'Items API' do
 
     context 'when todo exists' do
       it 'returns status code 200' do 
-        expect (response).to have_http_status(200)
+        expect(response).to have_http_status(200)
       end
 
       it 'returns all todo items' do 
@@ -82,7 +82,7 @@ RSpec.describe 'Items API' do
       end
 
       it 'returns a failure message' do 
-        expect(reponse.body).to match(/Validation failed: Name can't be blank/)
+        expect(response.body).to match(/Validation failed: Name can't be blank/)
       end
     end
   end
@@ -95,12 +95,12 @@ RSpec.describe 'Items API' do
 
     context "when the item exists" do 
       it "returns satus code 204" do 
-        expect(reponse).to have_http_status(204)
+        expect(response).to have_http_status(204)
       end
 
       it 'udpates the items' do
         updated_item = Item.find(id)
-        expect(updated_item).to match(/Mozart/)
+        expect(updated_item.name).to match(/Mozart/)
       end
     end
         
