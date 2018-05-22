@@ -17,7 +17,6 @@ class TodosController < ApplicationController
   end
 
   def update
-    puts "were working with #{@todo.inspect}"
     @todo.update!(todo_params)
     head :no_content
   end
